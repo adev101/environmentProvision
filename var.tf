@@ -15,12 +15,6 @@ variable "aws_secret_key" {
   default     = ""
 }
 
-variable "aws_region" {
-  description = "AWS region"
-  type        = string
-  default     = "ap-south-1"
-}
-
 
 variable "instance_type" {
   description = "instance type for ec2"
