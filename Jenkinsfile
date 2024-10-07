@@ -6,7 +6,11 @@ pipeline{
 		AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
 		AWS_REGION = 'ap-south-1'
 	}
-	
+
+	parameters {
+	        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
+	        choice(name: 'action', choices: ['apply', 'destroy'], description: 'Select the action to perform')
+    	}
 	
 	stages{
 		stage('Checkout'){
@@ -31,10 +35,11 @@ pipeline{
 			}
 		}
 		
-		stage('Terraform Apply'){
+		stage('Terraform Apply/ Destroy'){
 			steps{
+				
 				sh 'cd src'
-				sh 'terraform apply -auto-approve'
+				sh 'terraform ${action} -auto-approve'
 			}
 		}
 
