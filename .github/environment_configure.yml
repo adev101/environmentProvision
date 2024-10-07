@@ -1,0 +1,39 @@
+name: Environment Configure
+
+on:
+  workflow_dispatch
+
+jobs:
+
+  deploy:
+    name: Environment Provision
+    runs-on: ubuntu-latest
+
+    steps:
+      
+    - uses: actions/checkout@v4
+      name: Checkout Repository
+  
+    - uses: aws-actions/configure-aws-credentials@v1
+      with:
+        AWS_ACCESS_KEY_ID : ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      name: Configure the AWS connection
+
+    - name: Terraform Init
+      id: init
+      shell: bash
+      run: |
+        terraform init
+
+    - name: Terraform Plan
+      id: Plan
+      shell: bash
+      run: |
+        terraform Plan
+
+    - name: Terraform Apply
+      id: Apply
+      shell: bash
+      run: |
+        terraform Apply
