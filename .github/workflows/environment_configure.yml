@@ -57,4 +57,4 @@ jobs:
       id: Apply or Destroy
       shell: bash
       run: |
-        terraform ${{ Action }} -auto-approve
+        terraform ${{ input.Action }} -auto-approve
