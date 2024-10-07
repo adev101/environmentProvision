@@ -53,8 +53,8 @@ jobs:
       run: |
         terraform plan
 
-    - name: Terraform Apply
-      id: Apply
+    - name: Terraform Apply/Destroy
+      id: Apply or Destroy
       shell: bash
       run: |
-        terraform apply -auto-approve
+        terraform ${{ Action }} -auto-approve
