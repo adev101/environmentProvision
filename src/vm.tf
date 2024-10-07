@@ -1,8 +1,8 @@
 provider "aws" {
   region = "ap-south-1"
-  access_key = credentials("AWS_ACCESS_KEY_ID")
-  secret_key = credentials("AWS_SECRET_ACCESS_KEY")
-}
+  access_key = var.AWS_ACCESS_KEY_ID
+  secret_key = var.AWS_SECRET_ACCESS_KEY
+  }
 
 #Create security group with firewall rules
 resource "aws_security_group" "my_security_group" {
