@@ -57,4 +57,4 @@ jobs:
       id: Apply
       shell: bash
       run: |
-        terraform apply
+        terraform apply -auto-approve
