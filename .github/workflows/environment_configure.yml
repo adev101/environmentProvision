@@ -51,10 +51,10 @@ jobs:
       id: Plan
       shell: bash
       run: |
-        terraform Plan
+        terraform plan
 
     - name: Terraform Apply
       id: Apply
       shell: bash
       run: |
-        terraform Apply
+        terraform apply
