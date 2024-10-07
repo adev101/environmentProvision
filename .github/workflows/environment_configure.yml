@@ -54,7 +54,7 @@ jobs:
         terraform plan
 
     - name: Terraform Apply/Destroy
-      id: Apply or Destroy
+      id: Apply-Destroy
       shell: bash
       run: |
         terraform ${{ inputs.Action }} -auto-approve
