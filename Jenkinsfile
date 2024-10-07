@@ -18,6 +18,7 @@ pipeline{
 		stage('Terraform Init'){
 			steps{
 				sh 'cd src'
+				sh 'pwd'
 				sh 'terraform init'
 			}
 		}
@@ -25,6 +26,7 @@ pipeline{
 		stage('Terraform Plan'){
 			steps{
 				sh 'cd src'
+				sh 'pwd'
 				sh 'terraform plan'
 			}
 		}
