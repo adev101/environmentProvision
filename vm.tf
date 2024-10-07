@@ -1,17 +1,4 @@
-terraform{
-  required_providers{
-  aws = {
-    source = "hashicorp/aws"
-    version = "~> 5.70.0"
-    }
-  }
-}
 
-provider "aws" {
-  region = "ap-south-1"
-  access_key = var.AWS_ACCESS_KEY_ID
-  secret_key = var.AWS_SECRET_ACCESS_KEY
-  }
 
 #Create security group with firewall rules
 resource "aws_security_group" "my_security_group" {
@@ -48,7 +35,6 @@ resource "aws_security_group" "my_security_group" {
 # Create AWS ec2 instance
 resource "aws_instance" "myFirstInstance" {
   ami           = var.ami_id
-  #key_name = var.key_name
   instance_type = var.instance_type
   security_groups= [var.security_group]
   tags= {
