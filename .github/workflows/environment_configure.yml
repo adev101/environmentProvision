@@ -1,6 +1,27 @@
 name: Environment Configure
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      AutoApprove:
+        description: 'autoApprove'
+        required: true
+        default: false
+        type: choice
+        options:
+          - true
+          - false
+      
+      Action:
+        description: Choose what you want to do
+        required: true
+        default: apply
+        type: choice
+        options:
+          - apply
+          - destroy
+
+
 
 jobs:
 
