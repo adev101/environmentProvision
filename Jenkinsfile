@@ -17,18 +17,21 @@ pipeline{
 		
 		stage('Terraform Init'){
 			steps{
+				sh 'cd src'
 				sh 'terraform init'
 			}
 		}
 		
 		stage('Terraform Plan'){
 			steps{
+				sh 'cd src'
 				sh 'terraform plan'
 			}
 		}
 		
 		stage('Terraform Apply'){
 			steps{
+				sh 'cd src'
 				sh 'terraform apply -auto-approve'
 			}
 		}
