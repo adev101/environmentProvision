@@ -49,6 +49,7 @@ jobs:
 
   ConfigureSSH:
     name: Configure SSH on server
+    needs: LoginToServer
     runs-on: ubuntu-latest
     steps:
       - name: generate SSH Key
@@ -60,6 +61,7 @@ jobs:
 
   InstallApplications:
     name: Install JDK
+    needs: LoginToServer
     runs-on: ubuntu-latest
     steps:
       - name: Install jdk
