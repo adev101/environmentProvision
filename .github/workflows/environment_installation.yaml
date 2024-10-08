@@ -1,0 +1,58 @@
+name: Environment Application Setup
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      ip:
+        description: "IP Address of Server to Configure"
+        required: true
+        type: string
+
+      keyfile:
+        description: "Key file to be used for connection"
+        required: false
+        type: string
+
+      applist:
+        description: "List of packages to be installed on new server"
+        required: true
+        type: string
+
+
+jobs:
+  LoginToServer:
+    name: Login to the server created  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run login command
+        run: sh "ssh -i \"29sep.pem\" ubuntu@${{ inputs.ip }}"
+
+      - name: Change SuperUser
+        run: sh "sudo su"
+    
+  InstallAnsible:
+    name: Install Ansible  
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Installing Ansible
+        run: |
+            sh "apt install ansible -y"
+
+  ConfigureSSH:
+    name: Configure SSH on server
+    runs-on: ubuntu-latest
+    steps:
+      - name: generate SSH Key
+        run: sh "echo| echo| eecho| ssh-keygen"
+      
+      - name: get the key and add in Authorization Keys file
+        run: sh "cat /root/.ssh/id_ed25519.pub >> /root/.ssh/authorized_keys"
+
+
+  InstallApplications:
+    name: Install JDK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install jdk
+        run: sh "apt install openjdk-17-jdk -y"
