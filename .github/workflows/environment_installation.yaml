@@ -35,9 +35,8 @@ jobs:
         run: |
            echo "${{ secrets.SEP_29_KEY }}" > private_key && chmod 600 private_key
            ssh -o StrictHostKeyChecking=no -i private_key ubuntu@${{ inputs.ip }}
+           sh "sudo su"
 
-      - name: Change SuperUser
-        run: sh "sudo su"
     
   InstallAnsible:
     name: Install Ansible  
