@@ -38,6 +38,7 @@ resource "aws_instance" "myFirstInstance" {
   instance_type = var.instance_type
   #security_groups= [var.security_group]
   security_groups= ["default"]
+  key-name= var.keypair
   tags= {
     Name = var.tag_name
   }
