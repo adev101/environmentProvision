@@ -42,4 +42,7 @@ resource "aws_instance" "myFirstInstance" {
   tags= {
     Name = var.tag_name
   }
+  provisioner "local-exec" {
+    command = "echo ${self.public_ip} >> public_ips.txt"
+  }
 }
