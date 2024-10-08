@@ -40,6 +40,7 @@ jobs:
     
   InstallAnsible:
     name: Install Ansible  
+    needs: LoginToServer
     runs-on: ubuntu-latest  
     steps:
       - name: Installing Ansible
