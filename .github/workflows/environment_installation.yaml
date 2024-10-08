@@ -8,11 +8,6 @@ on:
         required: true
         type: string
 
-      keyfile:
-        description: "Key file to be used for connection"
-        required: true
-        type: string
-
       applist:
         description: "List of packages to be installed on new server"
         required: true
@@ -22,11 +17,6 @@ on:
       ip:
         description: "IP Address of Server to Configure"
         required: true
-        type: string
-
-      keyfile:
-        description: "Key file to be used for connection"
-        required: false
         type: string
 
       applist:
@@ -41,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run login command
-        run: sh "ssh -i \"29sep.pem\" ubuntu@${{ inputs.ip }}"
+        run: sh "ssh -i ${{ secrets.sep_29_key }} ubuntu@${{ inputs.ip }}"
 
       - name: Change SuperUser
         run: sh "sudo su"
