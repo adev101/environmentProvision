@@ -66,7 +66,7 @@ jobs:
     #     cat public_ips.txt
 
     - name: envrionment configuration
-      uses: environment_installation.yaml@main
+      uses: ./.github/workflows/environment_installation.yaml@main
       with:
         ip: $( cat public_ips.txt)
         applist: "docker.io"
