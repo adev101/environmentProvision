@@ -46,7 +46,7 @@ jobs:
       - name: Installing Ansible
         shell: bash
         run: |
-          sudo su
+          sudo su &&
           apt install ansible -y
 
   ConfigureSSH:
