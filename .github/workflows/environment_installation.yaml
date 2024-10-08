@@ -2,6 +2,21 @@ name: Environment Application Setup
 
 on:
   workflow_dispatch:
+    inputs:
+      ip:
+        description: "IP Address of Server to Configure"
+        required: true
+        type: string
+
+      keyfile:
+        description: "Key file to be used for connection"
+        required: true
+        type: string
+
+      applist:
+        description: "List of packages to be installed on new server"
+        required: true
+        type: string  
   workflow_call:
     inputs:
       ip:
