@@ -36,7 +36,9 @@ resource "aws_security_group" "my_security_group" {
 resource "aws_instance" "myFirstInstance" {
   ami           = var.ami_id
   instance_type = var.instance_type
-  security_groups= [var.security_group]
+  #security_groups= [var.security_group]
+  security_groups= ["default"]
+  key_name= var.keypair
   tags= {
     Name = var.tag_name
   }

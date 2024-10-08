@@ -35,3 +35,8 @@ variable "ami_id" {
   description = "AMI for Ubuntu Ec2 instance"
   default     = "ami-0dee22c13ea7a9a67"
 }
+
+variable "keypair" {
+  description = "Keypair value for connecting to Instance"
+  default = "29sep"
+}
