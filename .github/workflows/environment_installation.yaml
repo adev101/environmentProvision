@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run login command
-        run: sh "ssh -i ${{ secrets.sep_29_key }} ubuntu@${{ inputs.ip }}"
+        run: sh "ssh -i ${{ secrets.SEP_29_KEY }} ubuntu@${{ inputs.ip }}"
 
       - name: Change SuperUser
         run: sh "sudo su"
