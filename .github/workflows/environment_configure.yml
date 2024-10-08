@@ -58,3 +58,15 @@ jobs:
       shell: bash
       run: |
         terraform ${{ inputs.Action }} -auto-approve
+
+    # - name: Get the IP Address of Instance Created
+    #   id: get-IP
+    #   shell: bash
+    #   run: |
+    #     cat public_ips.txt
+
+    - name: envrionment configuration
+      uses: environment_installation.yaml@main
+      with:
+        ip: $( cat public_ips.txt)
+        applist: "docker.io"
