@@ -35,6 +35,7 @@ jobs:
         run: |
            echo "${{ secrets.SEP_29_KEY }}" > private_key && chmod 600 private_key
            ssh -o StrictHostKeyChecking=no -i private_key ubuntu@${{ inputs.ip }}
+           sudo apt update -y && sudo apt upgrade -y
 
     
   InstallAnsible:
@@ -43,8 +44,10 @@ jobs:
     runs-on: ubuntu-latest  
     steps:
       - name: Installing Ansible
+        shell: bash
         run: |
-            sh "apt install ansible -y"
+          sudo su
+          apt install ansible -y
 
   ConfigureSSH:
     name: Configure SSH on server
