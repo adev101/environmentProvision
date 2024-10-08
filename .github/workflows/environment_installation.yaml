@@ -46,19 +46,18 @@ jobs:
       - name: Installing Ansible
         shell: bash
         run: |
-          sudo su &&
-          apt install ansible -y
+          sudo apt install ansible -y
 
   ConfigureSSH:
     name: Configure SSH on server
     needs: LoginToServer
     runs-on: ubuntu-latest
     steps:
-      - name: generate SSH Key
-        run: sh "echo| echo| echo| ssh-keygen"
-      
-      - name: get the key and add in Authorization Keys file
-        run: sh "cat /root/.ssh/id_ed25519.pub >> /root/.ssh/authorized_keys"
+      - name: generate SSH Key and add in Authorization Keys file
+        shell: bash
+        run: |
+          echo| echo| echo| ssh-keygen
+          cat /root/.ssh/id_ed25519.pub >> /root/.ssh/authorized_keys
 
 
   InstallApplications:
@@ -67,4 +66,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install jdk
-        run: sh "apt install openjdk-17-jdk -y"
+        shell: bash
+        run:  sudo apt install openjdk-17-jdk -y
