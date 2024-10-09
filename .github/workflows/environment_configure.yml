@@ -29,16 +29,12 @@ on:
           - t2.micro
           - t2.medium
 
-env:
-  TF_VAR_instance_type = inputs.InstanceType
-
-
 jobs:
 
   deploy:
     name: Environment Provision
     runs-on: ubuntu-latest
-
+  
     steps:
       
     - uses: actions/checkout@v4
