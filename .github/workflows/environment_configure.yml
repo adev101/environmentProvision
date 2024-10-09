@@ -21,6 +21,16 @@ on:
           - apply
           - destroy
 
+      InstanceType:
+        description: Enter the instance type
+        required: true
+        type: choice
+        options:
+          - t2.micro
+          - t2.medium
+
+env:
+  TF_VAR_instance_type = inputs.InstanceType
 
 
 jobs:
